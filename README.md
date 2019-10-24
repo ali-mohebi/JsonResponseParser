@@ -58,7 +58,7 @@ where JsonResponse is like:
 }
 ```
 
-### configure:
+### configuration:
 
 if data was sending by any other name you can set that name in ResponseParser like:
 
