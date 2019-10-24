@@ -1,6 +1,7 @@
 # JsonResponseParser
 parsing jsonObjects using gson
 
+
 ## installing:
 
 Step 1. Add the JitPack repository to your build file
@@ -22,6 +23,7 @@ Step 2. Add the dependency
 ### important: 
 
 your models should be in gson standard model
+
 
 #### example model:
 
@@ -58,6 +60,7 @@ where JsonResponse is like:
 }
 ```
 
+
 ### configuration:
 
 if the server was sending data by any other name than "data", you can set that name in ResponseParser like:
@@ -77,7 +80,6 @@ you can use these codes
 ResponseParser mResponseParser = new ResponseParser();
 mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, mPageHandler);
 ```
-
 
 in request's listener like bellow:
 
@@ -102,6 +104,7 @@ and mPageHandler is a listener which you can use it like
 String mNextPage = "";
 mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, next -> mNextPage = next);
 ```
+
 
 #### you can also use:
 
