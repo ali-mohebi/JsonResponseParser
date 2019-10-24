@@ -16,37 +16,68 @@ import java.util.ArrayList;
 
 public class ResponseParser {
 
-    public <T> void getAndNotifyAdapter(@NonNull ArrayList<T> list, @NonNull JSONObject response, @NonNull RecyclerView.Adapter adapter, @Nullable PageHandler pageHandler, @NonNull Class<T> tClass) throws JSONException {
+    private String data = "data";
+
+    public <T> void addAndNotifyAdapter(@NonNull ArrayList<T> list, @NonNull JSONObject response, @NonNull RecyclerView.Adapter adapter, @Nullable PageHandler pageHandler, @NonNull Class<T> tClass) throws JSONException {
         setNextPage(response, pageHandler);
         int oldSize = list.size();
         ArrayList<T> arrayList;
         JSONArray jsonArray = null;
-        jsonArray = response.getJSONArray("data");
+        jsonArray = response.getJSONArray(data);
         Gson gson = new Gson();
         arrayList = gson.fromJson(jsonArray.toString(), new ListOfGenerics<>(tClass));
         list.addAll(arrayList);
         int newSize = list.size();
         adapter.notifyItemRangeInserted(oldSize, newSize);
     }
-
-    private <T> void getAndNotifyAdapter(@NonNull ArrayList<T> list, @NonNull JSONObject response, @NonNull ArrayAdapter adapter, @Nullable PageHandler pageHandler, @NonNull Class<T> tClass) throws JSONException {
+    private <T> void addAndNotifyAdapter(@NonNull ArrayList<T> list, @NonNull JSONObject response, @NonNull ArrayAdapter adapter, @Nullable PageHandler pageHandler, @NonNull Class<T> tClass) throws JSONException {
         setNextPage(response, pageHandler);
         ArrayList<T> arrayList;
         JSONArray jsonArray = null;
-        jsonArray = response.getJSONArray("data");
+        jsonArray = response.getJSONArray(data);
         Gson gson = new Gson();
         arrayList = gson.fromJson(jsonArray.toString(), new ListOfGenerics<>(tClass));
         list.addAll(arrayList);
         adapter.notifyDataSetChanged();
     }
-
-    public <T> void get(@NonNull ArrayList<T> list, @NonNull JSONObject response, @Nullable PageHandler pageHandler, @NonNull Class<T> tClass) throws JSONException {
+    public <T> void add(@NonNull ArrayList<T> list, @NonNull JSONObject response, @Nullable PageHandler pageHandler, @NonNull Class<T> tClass) throws JSONException {
         setNextPage(response, pageHandler);
         ArrayList<T> arrayList;
-        JSONArray jsonArray = response.getJSONArray("data");
+        JSONArray jsonArray = response.getJSONArray(data);
         Gson gson = new Gson();
         arrayList = gson.fromJson(jsonArray.toString(), new ListOfGenerics<>(tClass));
         list.addAll(arrayList);
+    }
+
+    public <T> void addAndNotifyAdapter(@NonNull ArrayList<T> list, @NonNull JSONArray response, @NonNull RecyclerView.Adapter adapter, @Nullable PageHandler pageHandler, @NonNull Class<T> tClass) throws JSONException {
+        int oldSize = list.size();
+        ArrayList<T> arrayList;
+        Gson gson = new Gson();
+        arrayList = gson.fromJson(response.toString(), new ListOfGenerics<>(tClass));
+        list.addAll(arrayList);
+        int newSize = list.size();
+        adapter.notifyItemRangeInserted(oldSize, newSize);
+    }
+    private <T> void addAndNotifyAdapter(@NonNull ArrayList<T> list, @NonNull JSONArray response, @NonNull ArrayAdapter adapter, @Nullable PageHandler pageHandler, @NonNull Class<T> tClass) throws JSONException {
+        ArrayList<T> arrayList;
+        Gson gson = new Gson();
+        arrayList = gson.fromJson(response.toString(), new ListOfGenerics<>(tClass));
+        list.addAll(arrayList);
+        adapter.notifyDataSetChanged();
+    }
+    public <T> void add(@NonNull ArrayList<T> list, @NonNull JSONArray response, @Nullable PageHandler pageHandler, @NonNull Class<T> tClass) throws JSONException {
+        ArrayList<T> arrayList;
+        Gson gson = new Gson();
+        arrayList = gson.fromJson(response.toString(), new ListOfGenerics<>(tClass));
+        list.addAll(arrayList);
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     private void setNextPage(JSONObject response, PageHandler pageHandler) {
