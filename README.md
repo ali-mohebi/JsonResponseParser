@@ -60,5 +60,17 @@ mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, next -> mNextP
 #### you can also use:
 
 ```
+mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, null);
+```
+
+or
+
+```
 mResponseParser.add(mDataSet, response, mPageHandler);
+```
+
+or
+
+```
+mResponseParser.add(mDataSet, response, null);
 ```
