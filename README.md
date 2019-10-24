@@ -33,7 +33,7 @@ mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, mPageHandler);
 ```
 
 
-in request's listener add following code like:
+in request's listener like bellow:
 
 ```
 JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
