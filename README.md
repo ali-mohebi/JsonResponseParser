@@ -50,8 +50,14 @@ JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
 ```
 
 where mAdapter is your RecyclerViewAdapter or ArrayAdapter
+and mPageHandler is a listener which you can use it like
 
-you can also use:
+```
+String mNextPage = "";
+mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, next -> mNextPage = next);
+```
+
+#### you can also use:
 
 ```
 mResponseParser.add(mDataSet, response, mPageHandler);
