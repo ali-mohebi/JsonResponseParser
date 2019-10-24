@@ -22,11 +22,18 @@ Step 2. Add the dependency
   
   
 how to use:
+
+```
 ResponseParser mResponseParser = new ResponseParser();
 mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, mPageHandler);
+```
 
 where:
+
 mAdapter is your RecyclerViewAdapter or ArrayAdapter
 
-you can also use 
+you can also use:
+
+```
 mResponseParser.add(mDataSet, response, mPageHandler);
+```
