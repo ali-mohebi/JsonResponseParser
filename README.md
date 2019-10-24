@@ -25,9 +25,28 @@ your models should be in gson standard model
 	
 ### how to use:
 
+you can use these codes
+
 ```
 ResponseParser mResponseParser = new ResponseParser();
 mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, mPageHandler);
+```
+
+
+in request's listener add following code like:
+
+```
+JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
+                response -> {
+                    try {
+                        mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, mPageHandler);
+			// your additional code here
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }, error -> {
+			error.printStackTrace();
+        });
 ```
 
 where mAdapter is your RecyclerViewAdapter or ArrayAdapter
