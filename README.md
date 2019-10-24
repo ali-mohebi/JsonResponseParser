@@ -60,7 +60,7 @@ where JsonResponse is like:
 
 ### configuration:
 
-if data was sending by any other name you can set that name in ResponseParser like:
+if the server was sending data by any other name than "data", you can set that name in ResponseParser like:
 
 ```
 mResponseParser.setResponseDataName(responseName);
