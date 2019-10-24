@@ -72,11 +72,11 @@ public class ResponseParser {
         list.addAll(arrayList);
     }
 
-    public String getData() {
+    public String getResponseDataName() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setResponseDataName(String data) {
         this.data = data;
     }
 
