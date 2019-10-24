@@ -20,8 +20,54 @@ Step 2. Add the dependency
   
   
 ### important: 
+
 your models should be in gson standard model
-	
+
+#### example model:
+
+```
+public class TestModel{
+
+    private int id;
+    private String body;
+    private String title;
+    private String file;
+    @SerializedName("file_size")
+    private float fileSize;
+    @SerializedName("file_name") //TODO: check if server response has the same name
+    private String fileName;
+    
+}
+
+```
+
+where JsonResponse is like:
+
+```
+{
+    "data": [
+        {
+            "id": 30,
+            "title": "article title",
+            "body": "article body",
+	    "file": "testUrl",
+	    "file_size": 500,
+	    "file_name": "test name"
+	 }, ...
+     ]
+}
+```
+
+### configure:
+
+if data was sending by any other name you can set that name in ResponseParser like:
+
+```
+mResponseParser.setResponseDataName(responseName);
+```
+
+otherwise you don't need to do anything
+
 	
 ### how to use:
 
