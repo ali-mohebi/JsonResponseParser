@@ -1,9 +1,7 @@
 # JsonResponseParser
 parsing jsonObjects using gson
 
-important: your models should be in gson standard
-
-To get a Git project into your build:
+### installing:
 
 Step 1. Add the JitPack repository to your build file
 Add it in your root build.gradle at the end of repositories:
@@ -21,6 +19,9 @@ Step 2. Add the dependency
 	}
   
   
+## important: 
+	your models should be in gson standard
+	
 how to use:
 
 ```
@@ -28,9 +29,7 @@ ResponseParser mResponseParser = new ResponseParser();
 mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, mPageHandler);
 ```
 
-where:
-
-mAdapter is your RecyclerViewAdapter or ArrayAdapter
+where mAdapter is your RecyclerViewAdapter or ArrayAdapter
 
 you can also use:
 
