@@ -1,7 +1,7 @@
 # JsonResponseParser
 parsing jsonObjects using gson
 
-### installing:
+## installing:
 
 Step 1. Add the JitPack repository to your build file
 Add it in your root build.gradle at the end of repositories:
@@ -19,8 +19,8 @@ Step 2. Add the dependency
 	}
   
   
-## important: 
-	your models should be in gson standard
+### important: 
+your models should be in gson standard model
 	
 how to use:
 
