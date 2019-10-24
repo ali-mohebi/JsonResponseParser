@@ -22,7 +22,8 @@ Step 2. Add the dependency
 ### important: 
 your models should be in gson standard model
 	
-how to use:
+	
+### how to use:
 
 ```
 ResponseParser mResponseParser = new ResponseParser();
