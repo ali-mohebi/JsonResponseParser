@@ -78,7 +78,7 @@ you can use these codes
 
 ```
 ResponseParser mResponseParser = new ResponseParser();
-mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, mPageHandler);
+mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, mPageHandler, TestModel.class);
 ```
 
 in request's listener like bellow:
@@ -87,7 +87,7 @@ in request's listener like bellow:
 JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
                 response -> {
                     try {
-                        mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, mPageHandler);
+                        mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, mPageHandler, TestModel.class);
 			// your additional code here
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -102,24 +102,24 @@ and mPageHandler is a listener which you can use it like
 
 ```
 String mNextPage = "";
-mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, next -> mNextPage = next);
+mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, next -> mNextPage = next, TestModel.class);
 ```
 
 
 #### you can also use:
 
 ```
-mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, null);
+mResponseParser.addAndNotifyAdapter(mDataSet, response, mAdapter, null, TestModel.class);
 ```
 
 or
 
 ```
-mResponseParser.add(mDataSet, response, mPageHandler);
+mResponseParser.add(mDataSet, response, mPageHandler, TestModel.class);
 ```
 
 or
 
 ```
-mResponseParser.add(mDataSet, response, null);
+mResponseParser.add(mDataSet, response, null, TestModel.class);
 ```
